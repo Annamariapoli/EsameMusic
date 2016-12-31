@@ -2,21 +2,21 @@ package bean;
 
 public class ArtistiEAscolti {
 	
-	private int id;
+	private int artistid;
 	private String nome;
 	private int numAscolti;
 	
-	public ArtistiEAscolti(int id,String nome, int numAscolti) {
+	public ArtistiEAscolti(int artistid,String nome, int numAscolti) {
 		super();
-		this.id = id;
+		this.artistid = artistid;
 		this.nome=nome;
 		this.numAscolti = numAscolti;
 	}
 	public int getId() {
-		return id;
+		return artistid;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.artistid = id;
 	}
 	public int getNumAscolti() {
 		return numAscolti;
@@ -33,7 +33,7 @@ public class ArtistiEAscolti {
 	
 	public String toString(){
 		String ris ;
-		ris =id+" "+nome+" "+numAscolti+" \n";
+		ris =artistid+" "+nome+" "+numAscolti+" \n";
 		return ris;
 	}
 	

@@ -107,4 +107,9 @@ public class Model {
 		}
 		System.out.println(grafo.toString());
 	}
+	
+	public static void main(String [] args){
+		Model m = new Model();
+		m.buildGraph(12);
+	}
 }

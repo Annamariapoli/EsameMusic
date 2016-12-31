@@ -35,13 +35,13 @@ public class Dao {
 		Connection conn = DBConnect.getConnection();
 		List<ArtistiEAscolti> artisti = new LinkedList<>();
 		String query = "select a.id, a.artist,  count(l.id) as numascolti from listening l, artist a "
-				+ "where l.month=12  and a.id=l.artistid group by l.artistid order by numascolti DESC Limit 20";
+				+ "where l.month=?  and a.id=l.artistid group by l.artistid order by numascolti DESC Limit 20";
 		try{
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setInt(1, mese);
 			ResultSet res = st.executeQuery();
 			while(res.next()){
-				ArtistiEAscolti a = new ArtistiEAscolti(res.getInt("artistid"), res.getString("nome"), res.getInt("numascolti"));
+				ArtistiEAscolti a = new ArtistiEAscolti(res.getInt("id"), res.getString("artist"), res.getInt("numascolti"));
 				artisti.add(a);	
 			}
 			conn.close();
@@ -57,7 +57,7 @@ public class Dao {
 		Connection conn = DBConnect.getConnection();
 		String query = "select  count(l.id) as numascolti , l.countryid "
 				+ "from listening l, artist a  "
-				+ "where l.month=12  and a.id=l.artistid  "
+				+ "where l.month=?  and a.id=l.artistid  "
 				+ "group by l.artistid  "
 				+ "order by numascolti DESC "
 				+ "Limit 20";

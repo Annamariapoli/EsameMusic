@@ -46,7 +46,7 @@ public class SampleController {
     }
 
     @FXML
-    void doElenco(ActionEvent event) {
+    void doElenco(ActionEvent event) {   //credo funzioni correttamente
     	txtResult.clear();
     	if(combo.getValue()==null){
     		txtResult.appendText("Seleziona un mese!\n");
@@ -55,8 +55,10 @@ public class SampleController {
     	String mese = combo.getValue();
     	int numeroMese = m.getConvertoInNumero(mese);   //funziona
     	
-    	List<ArtistiEAscolti> artisti = m.getArtisti(numeroMese);          //errore
-    	txtResult.appendText(artisti.toString());
+    	List<ArtistiEAscolti> artisti = m.getArtisti(numeroMese);         
+    	for(ArtistiEAscolti a : artisti){
+    	txtResult.appendText("Nome: "+ a.getNome() +"  "+"Numero di ascolti: "+ a.getNumAscolti()+" \n");
+    	}
     	
     	btnDistMax.setDisable(false);
     
