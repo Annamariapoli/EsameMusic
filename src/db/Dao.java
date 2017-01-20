@@ -74,6 +74,7 @@ public class Dao {
 				}
 			}
 			conn.close();
+			System.out.println(nazioni);
 			return nazioni;
 		}catch(SQLException e ){
 			e.printStackTrace();
@@ -110,8 +111,9 @@ public class Dao {
 		try{
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setInt(1, mese);
-			st.setInt(1, id1);
-			st.setInt(1, id2);
+			st.setInt(2, mese);
+			st.setInt(3, id1);
+			st.setInt(4, id2);
 			ResultSet res = st.executeQuery();
 			if(res.next()){
 			    return true;
@@ -136,8 +138,9 @@ public class Dao {
 			int conta =-1;
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setInt(1, mese);
-			st.setInt(1, c1.getId());
-			st.setInt(1, c2.getId());
+			st.setInt(2,  mese);
+			st.setInt(3, c1.getId());
+			st.setInt(4, c2.getId());
 			ResultSet res = st.executeQuery();
 			if(res.next()){
 				conta = res.getInt("num");
@@ -171,4 +174,10 @@ public class Dao {
 //			return null;
 //		}	
 //	}
+	
+	
+	public static void main (String [] args){
+		Dao dao = new Dao();
+		dao.getNazioniDeiVenti(12);
+	}
 }
